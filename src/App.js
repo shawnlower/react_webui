@@ -1,45 +1,16 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import configureStore from './configureStore'
+import AsyncApp from './containers/AsyncApp'
 
-import './App.css';
-import TopNav from './components/TopNav'
-import ItemList from './components/ItemList'
+const store = configureStore()
 
-
-function App() {
-  const tileData = [
-    {
-      img: 'images/image1.jpg',
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-    {
-      img: 'images/image2.jpg',
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-    {
-      img: 'images/image3.jpg',
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-    {
-      img: 'images/image4.jpg',
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-  ];
-
-  return (
-    <Container fixed>
-      <TopNav />
-      <ItemList tileData={tileData}/>
-    </Container>
-  )
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AsyncApp />
+      </Provider>
+    )
+  }
 }
-
-export default App;
